@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 
 services:
   vote:
@@ -18,10 +18,13 @@ services:
 
   db:
     image: postgres:9.4
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
 
   result:
     build: ./result
-    command: nodemon --debug server.js
+    command: nodemon server.js
     volumes:
       - ./result:/app
     ports:
